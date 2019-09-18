@@ -1,5 +1,6 @@
 # MMD Utility
-
+# 改造点
+AVX化
 ## [インストール方法](https://github.com/oigami/MMDUtility/wiki/how_to_install)
 
 
