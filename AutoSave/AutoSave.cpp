@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iomanip>
 #include <atomic>
+#include <time.h>
 namespace filesystem = std::experimental::filesystem;
 using char8 = std::int8_t;
 extern HMODULE g_module;
@@ -573,7 +574,8 @@ namespace
 
       wchar_t buf[256];
       const time_t now_time = std::time(nullptr);
-      const tm* now = std::localtime(&now_time);
+	  tm* now = nullptr;
+	  localtime_s(now,&now_time);
       int len = swprintf_s(buf, L"_%d-%02d-%02d_%02d-%02d-%02d.pmm", now->tm_year + 1900, now->tm_mon + 1, now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
       save_path /= fname;
       save_path.concat(buf, buf + len);
